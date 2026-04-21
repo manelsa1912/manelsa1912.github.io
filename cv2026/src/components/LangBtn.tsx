@@ -1,8 +1,8 @@
 import { Button } from "@heroui/react";
 import { useTranslation } from "react-i18next";
-import { Languages } from "lucide-react";
+import { motion } from "framer-motion";
 
-export const LangBtn = () => {
+const LangBtn = () => {
   const { i18n } = useTranslation();
 
   const toggleLanguage = () => {
@@ -12,15 +12,26 @@ export const LangBtn = () => {
 
   return (
     <Button 
-      isIconOnly={false}
+      onClick={toggleLanguage}
       variant="flat" 
-      color="primary"
+      radius="full"
       size="sm"
-      onPress={toggleLanguage}
-      className="font-bold"
-      startContent={<Languages size={16} />}
+      className="font-bold border-1 border-primary/20 bg-primary/5 hover:bg-primary/10 transition-all min-w-[60px]"
     >
-      {i18n.language.toUpperCase() === 'PT' ? 'EN' : 'PT'}
+      <motion.div
+        key={i18n.language}
+        initial={{ rotateY: 90, opacity: 0 }}
+        animate={{ rotateY: 0, opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        className="flex items-center gap-2"
+      >
+        <span>{i18n.language === 'pt' ? '🇬🇧' : '🇵🇹'}</span>
+        <span className="text-[10px] uppercase tracking-tighter">
+          {i18n.language === 'pt' ? 'EN' : 'PT'}
+        </span>
+      </motion.div>
     </Button>
   );
 };
+
+export default LangBtn;

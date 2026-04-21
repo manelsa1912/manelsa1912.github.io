@@ -5,35 +5,73 @@ i18n.use(initReactI18next).init({
   resources: {
     pt: {
       translation: {
+        // Navegação
         nav_exp: "Experiência",
-        nav_edu: "Educação",
+        nav_edu: "Formação",
         nav_skills: "Skills",
-        hero_role: "Full-Stack Developer na Wisecrop",
-        hero_desc: "Especializado em React e Django, modernizando fluxos para mais de 2.000 profissionais agrícolas.",
-        map_title: "Localizações",
-        exp_title: "Experiência Profissional",
-        wisecrop_task1: "Redesign completo do fluxo de autenticação.",
-        wisecrop_task2: "Otimização de performance UI e queries Django ORM.",
-        wisecrop_task3: "Integração de Leaflet e Highcharts.",
+        
+        // Hero
+        hero_desc: "Full-Stack Developer especializado em React e Django. Focado em modernizar sistemas complexos e otimizar a experiência de milhares de utilizadores.",
+        
+        // Experiência - Wisecrop
+        exp_title: "Percurso Profissional",
+        wisecrop_task1: "Redesign completo do fluxo de autenticação, reduzindo pedidos de suporte.",
+        wisecrop_task2: "Otimização de queries MySQL via Django ORM para tráfego elevado.",
+        wisecrop_task3: "Integração de Leaflet e Highcharts para visualização de dados agrícolas.",
+        
+        // Freelance & Outros
+        exp_freelance_design: "Graphic Designer (Freelance)",
+        exp_freelance_design_desc: "Criação de identidades visuais e baralhos profissionais para marcas internacionais de magia.",
+        exp_magic: "Mágico Profissional",
+        exp_magic_desc: "Espetáculos interativos focados na experiência do público e entretenimento.",
+        
+        // Educação
+        edu_master_title: "Mestrado em Engenharia de Software",
+        edu_master_desc: "Foco em Engenharia de Requisitos, APIs seguras com DDD e sistemas distribuídos.",
+        edu_bachelor_title: "Licenciatura em Engenharia Informática",
+        edu_bachelor_desc: "Desenvolvimento Full-stack, redes IPv4 e arquiteturas distribuídas.",
+        
+        // Diversos
+        map_info: "Sediado no Grande Porto, a transformar café em código escalável.",
+        present: "Presente"
       }
     },
     en: {
       translation: {
+        // Navigation
         nav_exp: "Experience",
         nav_edu: "Education",
         nav_skills: "Skills",
-        hero_role: "Full-Stack Developer at Wisecrop",
-        hero_desc: "Specialized in React and Django, modernizing workflows for over 2,000 agricultural professionals.",
-        map_title: "Locations",
-        exp_title: "Professional Experience",
-        wisecrop_task1: "Complete redesign of the authentication flow.",
-        wisecrop_task2: "UI performance and Django ORM query optimization.",
-        wisecrop_task3: "Leaflet and Highcharts integration.",
+        
+        // Hero
+        hero_desc: "Full-Stack Developer specialized in React and Django. Focused on modernizing complex systems and optimizing the experience of thousands of users.",
+        
+        // Experience - Wisecrop
+        exp_title: "Professional Journey",
+        wisecrop_task1: "Complete redesign of the authentication flow, reducing support requests.",
+        wisecrop_task2: "MySQL query optimization via Django ORM for high-traffic views.",
+        wisecrop_task3: "Leaflet and Highcharts integration for agricultural data visualization.",
+        
+        // Freelance & Others
+        exp_freelance_design: "Graphic Designer (Freelance)",
+        exp_freelance_design_desc: "Visual identity design and professional playing cards for international magic brands.",
+        exp_magic: "Professional Magician",
+        exp_magic_desc: "Interactive performances focused on audience experience and entertainment.",
+        
+        // Education
+        edu_master_title: "Master's in Software Engineering",
+        edu_master_desc: "Focus on Requirements Engineering, Secure APIs with DDD, and distributed systems.",
+        edu_bachelor_title: "Bachelor's in Computer Engineering",
+        edu_bachelor_desc: "Full-stack development, IPv4 networks, and distributed architectures.",
+        
+        // Misc
+        map_info: "Based in Greater Porto, turning coffee into scalable code.",
+        present: "Present"
       }
     }
   },
-  lng: "pt",
-  fallbackLng: "en",
+  lng: "en",
+  fallbackLng: "pt",
   interpolation: { escapeValue: false }
 });
 
