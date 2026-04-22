@@ -50,7 +50,7 @@ export const Education = () => {
               <AccordionItem
                 key="1"
                 aria-label="Technical Reports"
-                title={<span className="text-sm font-bold text-default-600">{i18n.language === 'pt' ? 'Ver Relatórios Técnicos' : 'View Technical Reports'}</span>}
+                title={<span className="text-sm font-bold text-default-600">Project Repo</span>}
                 startContent={<FileText size={18} className="text-primary" />}
                 className="bg-background/50 border border-divider shadow-none"
               >

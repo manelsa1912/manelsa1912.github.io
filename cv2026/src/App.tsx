@@ -12,7 +12,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-background to-background text-foreground selection:bg-primary/30">
       <Navbar />
-      <main className="max-w-[1200px] mx-auto px-6 pt-32">
+      <main className="max-w-[1200px] mx-auto px-6 pt-8">
         <Hero />
         <Skills />
         <Experience />
