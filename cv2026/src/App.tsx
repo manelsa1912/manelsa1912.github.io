@@ -5,6 +5,7 @@ import { Skills } from "./components/Skills";
 import { Experience } from "./components/Experience";
 import { Education } from "./components/Education";
 import { MapSection } from "./components/MapSection";
+import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
         <Experience />
         <Education />
         <MapSection />
+        <Contact />
       </main>
       <Footer />
     </div>
