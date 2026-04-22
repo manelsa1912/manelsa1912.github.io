@@ -21,8 +21,8 @@ export const Experience = () => {
                   <p className="text-primary font-semibold flex items-center gap-2 text-lg">Wisecrop <ExternalLink size={16}/></p>
                 </div>
                 <div className="flex flex-col md:items-end">
-                  <Chip variant="faded" color="primary" className="mb-2">Nov 2023 — {i18n.language === 'pt' ? 'Presente' : 'Present'}</Chip>
-                  <span className="text-xs text-default-400 font-mono">2,000+ DAILY USERS</span>
+                  <Chip variant="faded" color="primary" className="mb-2 p-2">Nov 2023 — {i18n.language === 'pt' ? 'Presente' : 'Present'}</Chip>
+                  <span className="text-xs text-default-400 font-mono mr-2">2,000+ DAILY USERS</span>
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

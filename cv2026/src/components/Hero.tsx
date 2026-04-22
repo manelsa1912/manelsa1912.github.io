@@ -14,7 +14,8 @@ export const Hero = () => {
 
   return (
     <section className="min-h-[80vh] flex flex-col justify-center relative">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <img src="/assinatura.png" alt="" className="h-auto w-auto absolute opacity-10" />
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">  
         <motion.div 
           className="lg:col-span-7 space-y-8"
           initial="initial" animate="animate" transition={{ staggerChildren: 0.1 }}
@@ -67,6 +68,7 @@ export const Hero = () => {
             </div>
           </div>
         </motion.div>
+        
       </div>
     </section>
   );
