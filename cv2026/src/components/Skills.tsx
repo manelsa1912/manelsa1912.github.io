@@ -4,7 +4,7 @@ import { Chip } from "@heroui/react";
 const skills = ["React", "Django", "TypeScript", "Python", "C#", "SQL", "Docker", "Leaflet", "Highcharts", "Tailwind", "Git", "Erlang", "Laravel", "JWT", "PostgreSQL"];
 
 export const Skills = () => (
-  <section id="skills" className="py-20">
+  <section id="skills" className="py-20 md:py-40">
     <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
       {skills.map((skill) => (
         <motion.div key={skill} whileHover={{ scale: 1.1, rotate: 2 }} whileTap={{ scale: 0.95 }}>

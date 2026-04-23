@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Code2, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import LangBtn from "./LangBtn";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 
 export const Navbar = () => {
   const { t, i18n } = useTranslation();
@@ -12,7 +13,7 @@ export const Navbar = () => {
       shouldHideOnScroll
       position="sticky" 
       maxWidth="xl"
-      className="bg-background/60 backdrop-blur-xl border-b border-divider fixed z-20"
+      className="bg-background/60 backdrop-blur-xl border-b border-divider fixed z-20 p-1"
       classNames={{
         wrapper: "px-6",
       }}
@@ -23,10 +24,15 @@ export const Navbar = () => {
           animate={{ x: 0, opacity: 1 }} 
           className="flex items-center gap-2"
         >
-          <div className="p-2 bg-primary rounded-lg shadow-lg shadow-primary/20">
-            <Code2 className="text-primary-foreground" size={20} />
+          <div className="bg-primary rounded-lg shadow-lg shadow-primary/20">
+            {/* <Code2 className="text-primary-foreground" size={20} /> */}
+            <img 
+              src="/logo.png" 
+              alt="" 
+              className="h-auto w-8" 
+            />
           </div>
-          <p className="font-black text-xl tracking-tighter uppercase">
+          <p className="font-black md:text-xl tracking-tighter uppercase">
             Manuel Sá
           </p>
         </motion.div>
@@ -48,6 +54,7 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarContent justify="end" className="gap-4">
+        <ThemeSwitcher />
         <LangBtn />
         <Button 
           as={Link} 
@@ -56,10 +63,12 @@ export const Navbar = () => {
           variant="shadow" 
           size="sm" 
           radius="full" 
-          className="hidden md:flex font-bold px-6"
+          className="font-bold px-2 md:px-6" 
           startContent={<Mail size={16}/>}
         >
-          {i18n.language === 'pt' ? 'Contacto' : 'Contact'}
+          <span className="hidden md:inline">
+            {i18n.language === 'pt' ? 'Contacto' : 'Contact'}
+          </span>
         </Button>
       </NavbarContent>
     </HeroNavbar>
