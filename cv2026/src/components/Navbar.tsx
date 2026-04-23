@@ -1,6 +1,6 @@
 import { Navbar as HeroNavbar, NavbarContent, NavbarItem, Link, Button, NavbarBrand } from "@heroui/react";
 import { motion } from "framer-motion";
-import { Code2, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import LangBtn from "./LangBtn";
 import { ThemeSwitcher } from "./ThemeSwitcher";
@@ -25,7 +25,6 @@ export const Navbar = () => {
           className="flex items-center gap-2"
         >
           <div className="bg-primary rounded-lg shadow-lg shadow-primary/20">
-            {/* <Code2 className="text-primary-foreground" size={20} /> */}
             <img 
               src="/logo.png" 
               alt="" 
