@@ -6,23 +6,24 @@ export const ThemeSwitcher = () => {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    // Sincroniza com a classe no HTML ao carregar
     const theme = localStorage.getItem("theme");
+    const main = document.querySelector("main");
     if (theme === "light") {
       setIsDark(false);
-      document.documentElement.classList.remove("dark");
+      main?.classList.remove("dark");
     } else {
-      document.documentElement.classList.add("dark");
+      main?.classList.add("dark");
     }
   }, []);
 
   const toggleTheme = () => {
+    const main = document.querySelector("main");
     if (isDark) {
-      document.documentElement.classList.remove("dark");
+      main?.classList.remove("dark");
       localStorage.setItem("theme", "light");
       setIsDark(false);
     } else {
-      document.documentElement.classList.add("dark");
+      main?.classList.add("dark");
       localStorage.setItem("theme", "dark");
       setIsDark(true);
     }
@@ -33,7 +34,7 @@ export const ThemeSwitcher = () => {
       isIconOnly
       variant="faded"
       radius="full"
-      onClick={toggleTheme}
+      onPress={toggleTheme}
       className="bg-content1"
     >
       {isDark ? <Sun size={20} /> : <Moon size={20} />}
