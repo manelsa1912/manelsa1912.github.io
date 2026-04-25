@@ -64,7 +64,7 @@ export const Education = () => {
                   aria-label="Technical Projects"
                   title={<span className="text-sm font-black uppercase tracking-widest text-default-600">{t('edu_view_projects')}</span>}
                   startContent={<FileText size={20} className="text-primary" />}
-                  className="bg-background/60 border border-divider/40 shadow-none rounded-[24px] px-4"
+                  className="bg-background/60 border border-divider/40 shadow-none rounded-[24px] p-4"
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pb-4">
                     {reports.master.map((report, idx) => (
@@ -76,10 +76,11 @@ export const Education = () => {
                         variant="flat"
                         size="sm"
                         className="justify-between bg-background hover:bg-primary/10 group rounded-full px-4 h-10"
-                        endContent={<ExternalLink size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />}
                       >
+                        <div className="h-6 w-6 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                            <ExternalLink size={10} />
+                        </div> 
                         <span className="truncate text-[11px] font-bold uppercase tracking-tight">{report.title}</span>
-                        <Chip size="sm" variant="flat" color="primary" className="h-5 text-[9px] font-black border-none">{report.type}</Chip>
                       </Button>
                     ))}
                   </div>

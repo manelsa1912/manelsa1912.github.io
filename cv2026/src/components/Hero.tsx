@@ -13,7 +13,7 @@ export const Hero = () => {
   const { t, i18n } = useTranslation();
 
   return (
-    <section className="min-h-[80vh] flex flex-col justify-center relative mt-20">
+    <section className="min-h-[80vh] flex flex-col justify-center relative mt-[55px]">
       <img 
         src="/assinatura.png" 
         alt="" 

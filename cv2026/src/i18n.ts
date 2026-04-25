@@ -37,7 +37,9 @@ i18n.use(initReactI18next).init({
         
         // Diversos
         present: "Presente",
-        map_info: "Sediado no Grande Porto, a transformar café em código escalável."
+        map_info: "Sediado no Grande Porto, a transformar café em código escalável.",
+        map_title: "Locais Relevantes",
+        more_comming_soon: "Brevemente..."
       }
     },
     en: {
@@ -74,7 +76,9 @@ i18n.use(initReactI18next).init({
         
         // Misc
         present: "Present",
-        map_info: "Based in Greater Porto, turning coffee into scalable code."
+        map_info: "Based in Greater Porto, turning coffee into scalable code.",
+        map_title: "Relevant Locations",
+        more_comming_soon: "Coming Soon..."
       }
     }
   },
