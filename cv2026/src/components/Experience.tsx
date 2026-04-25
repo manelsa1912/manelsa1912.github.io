@@ -1,17 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { 
   Card, 
   CardBody, 
   Chip, 
   Divider, 
   Link, 
-  Modal, 
-  ModalContent, 
-  ModalHeader, 
-  ModalBody, 
-  ModalFooter,  
-  Button,
+
   useDisclosure 
 } from "@heroui/react";
 import { 
@@ -20,9 +15,7 @@ import {
   Sparkles, 
   Binary, 
   GraduationCap, 
-  Code2, 
-  ChevronLeft, 
-  ChevronRight 
+  Code2
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { MagicModal } from "./MagicModal";
@@ -68,9 +61,6 @@ export const Experience = () => {
     setCurrentSlide((prev) => (prev === portfolioItems.length - 1 ? 0 : prev + 1));
   };
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? portfolioItems.length - 1 : prev - 1));
-  };
 
   return (
     <section id="exp" className="py-20">

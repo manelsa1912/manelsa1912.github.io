@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Modal, 
@@ -18,14 +18,14 @@ import {
   Code2 
 } from "lucide-react";
 
-interface MagicModal {
+interface MagicModalProps {
   isOpen: boolean;
   onOpenChange: () => void;
 }
 
 const portfolioItems = [
   {
-    title: "The Mantis Playing Cards",
+    title: "The Mantis Playing Cards - Butterfly Magic Store",
     subtitle: "Product Engineering",
     image: "/mantis.jpg",
     techs: ["Adobe Suite", "Blender 3D", "Supply Chain Management"],
@@ -34,29 +34,43 @@ const portfolioItems = [
     color: "from-emerald-500/20 to-primary/20"
   },
   {
-    title: "UI Magic Concepts",
-    subtitle: "Creative Direction & UI",
-    image: "/ui-magic.jpg",
-    techs: ["Figma", "After Effects", "Spline"],
-    description: "Exploração de interfaces interativas e motion design para elevar a experiência do utilizador. Focado em criar identidades visuais que comunicam inovação.",
-    link: "#",
+    title: "Psychic Survival Kit - Peter Turner",
+    subtitle: "Tarot Card Design & Creative Direction",
+    image: "/tarot.png",
+    techs: ["Illustration", "QR Integration", "Print Production"],
+    description: "Design completo das cartas de Tarot para o kit de Peter Turner. O design integra de forma fluida QR Codes como feature central, unindo o físico ao digital.",
+    link: "https://www.kickstarter.com/projects/missingpiecedeck/psychic-survival-kit-peter-turner/description",
     color: "from-primary/20 to-purple-500/20"
+  },
+  {
+    title: "Beyond Fantasy - Sean Devine",
+    subtitle: "Book Cover Design",
+    image: "/beyond_fantasy.jpg",
+    techs: ["Graphic Design", "Typography", "Print Layout"],
+    description: "Design da capa (dust jacket) para o livro de Sean Devine. O conceito foi inspirado no clássico 'Effective Card Magic' de Bill Simon, trazendo um ar nostálgico e elegante para a magia moderna.",
+    link: "https://www.youtube.com/watch?v=j4D08FlFftQ",
+    color: "from-blue-600/20 to-indigo-900/40"
   }
 ];
 
-export const MagicModal = ({ isOpen, onOpenChange }: MagicModal) => {
+export const MagicModal = ({ isOpen, onOpenChange }: MagicModalProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev === portfolioItems.length - 1 ? 0 : prev + 1));
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev === 0 ? portfolioItems.length - 1 : prev - 1));
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev === portfolioItems.length - 1 ? 0 : prev + 1));
+      nextSlide();
     }, 10000);
     return () => clearInterval(timer);
-  }, [isOpen]);
-
-  const nextSlide = () => setCurrentSlide((prev) => (prev === portfolioItems.length - 1 ? 0 : prev + 1));
-  const prevSlide = () => setCurrentSlide((prev) => (prev === 0 ? portfolioItems.length - 1 : prev - 1));
+  }, [isOpen, currentSlide, nextSlide]);
 
   return (
     <Modal 
@@ -64,11 +78,12 @@ export const MagicModal = ({ isOpen, onOpenChange }: MagicModal) => {
         onOpenChange={onOpenChange}
         backdrop="blur"
         size="5xl"
+        scrollBehavior="inside"
         classNames={{
-          wrapper: "z-[9999] dark:dark",
+          wrapper: "z-[9999]",
           backdrop: "bg-black/50 backdrop-blur-md z-[9998]",
-          base: "bg-[#0a0a0a] border border-white/10 text-white shadow-2xl m-3 md:m-16 rounded-3xl relative overflow-hidden",
-          header: "border-b border-white/5 p-6 z-20 bg-[#0a0a0a]/80 backdrop-blur-md",
+          base: "bg-[#0a0a0a] border border-white/10 text-white shadow-2xl m-2 sm:m-4 md:m-16 rounded-3xl relative overflow-hidden h-[90vh]",
+          header: "border-b border-white/5 p-4 sm:p-6 z-20 bg-[#0a0a0a]/80 backdrop-blur-md",
           footer: "border-t border-white/5 p-4 z-20 bg-[#0a0a0a]",
           closeButton: "absolute right-4 top-4 hover:bg-white/10 active:bg-white/20 transition-colors z-[10000]",
         }}
@@ -77,20 +92,20 @@ export const MagicModal = ({ isOpen, onOpenChange }: MagicModal) => {
           {() => (
             <>
               <ModalHeader className="flex gap-3 items-center">
-                <div className="p-2 bg-primary/20 rounded-lg">
-                  <Sparkles className="text-primary" size={24} />
+                <div className="p-2 bg-primary/20 rounded-lg shrink-0">
+                  <Sparkles className="text-primary" size={20} />
                 </div>
-                <div className="flex flex-col">
-                  <span className="text-xl font-black italic tracking-tight">Magic & Design Portfolio</span>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-default-400 font-bold">Showcase • Slide {currentSlide + 1}/{portfolioItems.length}</span>
+                <div className="flex flex-col min-w-0">
+                  <span className="text-lg sm:text-xl font-black italic tracking-tight truncate">Magic & Design Portfolio</span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-default-400 font-bold">Slide {currentSlide + 1}/{portfolioItems.length}</span>
                 </div>
               </ModalHeader>
 
               <ModalBody className="p-0 overflow-hidden">
-                <div className="relative w-full min-h-[500px] lg:min-h-[600px] flex flex-col lg:flex-row">
+                <div className="relative w-full h-full flex flex-col lg:flex-row overflow-y-auto lg:overflow-hidden">
                   
-                  {/* COLUNA VISUAL */}
-                  <div className={`w-full lg:w-[60%] min-h-[300px] sm:min-h-[400px] lg:min-h-full relative bg-gradient-to-br ${portfolioItems[currentSlide].color} order-1 lg:order-2 flex items-center justify-center overflow-hidden transition-colors duration-1000`}>
+                  {/* COLUNA VISUAL: Em mobile ocupa altura limitada para dar espaço ao texto */}
+                  <div className={`w-full lg:w-[55%] h-[35vh] sm:h-[35vh] lg:h-full min-h-[300px] relative bg-gradient-to-br ${portfolioItems[currentSlide].color} flex items-center justify-center overflow-hidden transition-colors duration-1000 shrink-0`}>
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={currentSlide}
@@ -98,66 +113,67 @@ export const MagicModal = ({ isOpen, onOpenChange }: MagicModal) => {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 1.1 }}
                         transition={{ duration: 0.5 }}
-                        className="w-full h-full p-6 lg:p-12 flex items-center justify-center"
+                        className="w-full h-full p-4 sm:p-8 flex items-center justify-center"
                       >
-                        <div className="relative w-full aspect-video lg:aspect-square max-w-[500px] bg-black/30 backdrop-blur-2xl border border-white/10 rounded-2xl lg:rounded-3xl shadow-2xl overflow-hidden">
+                        <div className="relative w-full h-full bg-black/20 backdrop-blur-sm border border-white/5 rounded-2xl shadow-2xl overflow-hidden flex items-center justify-center">
                           {portfolioItems[currentSlide].image ? (
                             <img 
                               src={portfolioItems[currentSlide].image} 
                               alt={portfolioItems[currentSlide].title}
-                              className="absolute inset-0 w-full h-full object-cover"
+                              className="w-full h-full object-contain p-2 sm:p-4" 
                             />
                           ) : (
-                            <div className="w-full h-full flex items-center justify-center">
-                                <Code2 size={80} className="text-primary opacity-20" />
-                            </div>
+                            <Code2 size={60} className="text-primary opacity-20" />
                           )}
-                          
-                          {/* Overlay de Brilho */}
-                          <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-white/5 opacity-60 pointer-events-none" />
+                          <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-white/5 opacity-40 pointer-events-none" />
                         </div>
                       </motion.div>
                     </AnimatePresence>
 
-                    {/* Botões de Navegação */}
-                    <div className="absolute bottom-4 right-4 lg:bottom-8 lg:right-8 flex gap-2 z-30">
-                      <Button isIconOnly radius="full" size="md" variant="flat" className="bg-black/40 border border-white/10 backdrop-blur-md hover:bg-primary/20 text-white" onClick={prevSlide}>
-                        <ChevronLeft size={20} />
+                    {/* Navegação Manual: Mais compacta em mobile */}
+                    <div className="absolute bottom-4 right-4 flex gap-2 z-30">
+                      <Button isIconOnly radius="full" size="sm" variant="flat" className="bg-black/60 border border-white/10 backdrop-blur-md text-white sm:size-md" onClick={prevSlide}>
+                        <ChevronLeft size={18} />
                       </Button>
-                      <Button isIconOnly radius="full" size="md" variant="flat" className="bg-black/40 border border-white/10 backdrop-blur-md hover:bg-primary/20 text-white" onClick={nextSlide}>
-                        <ChevronRight size={20} />
+                      <Button isIconOnly radius="full" size="sm" variant="flat" className="bg-black/60 border border-white/10 backdrop-blur-md text-white sm:size-md" onClick={nextSlide}>
+                        <ChevronRight size={18} />
                       </Button>
                     </div>
                   </div>
 
-                  {/* COLUNA DE TEXTO */}
-                  <div className="w-full lg:w-[40%] p-8 sm:p-10 lg:p-14 flex flex-col justify-center z-10 order-2 lg:order-1 bg-[#0a0a0a]">
+                  {/* COLUNA DE TEXTO: Scrollable em mobile para o botão nunca ficar preso fora da vista */}
+                  <div className="w-full lg:w-[45%] p-6 sm:p-10 lg:p-14 flex flex-col justify-center bg-[#0a0a0a] overflow-y-auto lg:overflow-visible">
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={currentSlide}
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 10 }}
-                        className="space-y-6 lg:space-y-8"
+                        className="space-y-5 sm:space-y-8"
                       >
-                        <div className="space-y-3">
-                          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black italic tracking-tighter leading-[0.9] text-white">
-                            {portfolioItems[currentSlide].title.split(' - ')[0]} <br/>
-                            <span className="text-primary not-italic font-light text-2xl lg:text-3xl opacity-80">
-                              {portfolioItems[currentSlide].title.split(' - ')[1]}
-                            </span>
+                        <div className="space-y-1 md:space-y-3">
+                          <h3 className="text-2xl sm:text-3xl lg:text-5xl font-black italic text-white uppercase break-words pt-2">
+                            {portfolioItems[currentSlide].title.split(' - ')[0]}
+                            {portfolioItems[currentSlide].title.includes(' - ') && (
+                                <>
+                                    <br/>
+                                    <span className="text-primary not-italic font-light text-sm lg:text-3xl opacity-80 ml-2 sm:ml-0">
+                                        {portfolioItems[currentSlide].title.split(' - ')[1]}
+                                    </span>
+                                </>
+                            )}
                           </h3>
                         </div>
 
                         <div className="flex flex-wrap gap-1.5">
                           {portfolioItems[currentSlide].techs.map(tool => (
-                            <Chip key={tool} size="sm" variant="flat" className="bg-white/5 text-default-400 p-2 border border-white/5 text-[9px] font-bold uppercase">
+                            <Chip key={tool} size="sm" variant="flat" className="bg-white/5 text-default-400 border border-white/5 text-[9px] font-bold uppercase">
                               {tool}
                             </Chip>
                           ))}
                         </div>
 
-                        <p className="text-sm lg:text-base text-default-500 leading-relaxed font-medium max-w-sm">
+                        <p className="text-sm lg:text-base text-default-500 leading-relaxed font-medium italic border-l-2 border-primary/20 pl-4">
                           {portfolioItems[currentSlide].description}
                         </p>
 
@@ -169,7 +185,7 @@ export const MagicModal = ({ isOpen, onOpenChange }: MagicModal) => {
                             color="primary"
                             variant="shadow"
                             size="lg"
-                            className="w-full sm:w-auto font-black italic px-10"
+                            className="w-full sm:w-auto font-black italic px-8 shadow-primary/20"
                             endContent={<ExternalLink size={18} />}
                           >
                             View Project
@@ -180,7 +196,7 @@ export const MagicModal = ({ isOpen, onOpenChange }: MagicModal) => {
                               <button
                                 key={idx}
                                 onClick={() => setCurrentSlide(idx)}
-                                className={`h-1 transition-all duration-500 rounded-full ${idx === currentSlide ? 'w-10 bg-primary' : 'w-3 bg-white/10'}`}
+                                className={`h-1 transition-all duration-500 rounded-full ${idx === currentSlide ? 'w-8 bg-primary' : 'w-2 bg-white/10'}`}
                               />
                             ))}
                           </div>
@@ -192,13 +208,19 @@ export const MagicModal = ({ isOpen, onOpenChange }: MagicModal) => {
                 </div>
               </ModalBody>
 
-              <ModalFooter className="justify-between items-center">
-                <p className="text-[10px] text-default-400 font-medium hidden sm:block">
-                  © 2026 Manuel Sá — Design & Code
+              <ModalFooter className="hidden sm:flex justify-between items-center py-3 px-6">
+                <p className="text-[10px] text-default-400 font-medium tracking-wider">
+                  © 2026 MANUEL SÁ — DESIGN & CODE
                 </p>
-                <p className="text-[10px] text-primary/60 font-bold uppercase tracking-widest animate-pulse">
-                  Auto-playing showcase
-                </p>
+                <div className="flex items-center gap-2">
+                    <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                    <p className="text-[9px] text-primary/60 font-bold uppercase tracking-[0.2em]">
+                        Auto-playing
+                    </p>
+                </div>
               </ModalFooter>
             </>
           )}
