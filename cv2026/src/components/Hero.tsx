@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button, Avatar, Link } from "@heroui/react";
-import { Github, Linkedin, Briefcase, FileDown } from "lucide-react";
+import { Github, Linkedin, Briefcase } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const fadeIn = {

@@ -4,7 +4,7 @@ import { Briefcase, ExternalLink, Sparkles, Binary, GraduationCap, Code2 } from 
 import { useTranslation } from "react-i18next";
 
 export const Experience = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <section id="exp" className="py-20">

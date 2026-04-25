@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
 export const Education = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const reports = {
     master: [
