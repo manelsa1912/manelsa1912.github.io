@@ -9,9 +9,6 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        "brand-blue": "#0069e0", 
-      }
     },
   },
   darkMode: "class",

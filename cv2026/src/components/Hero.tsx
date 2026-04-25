@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button, Avatar, Link } from "@heroui/react";
-import { Github, Linkedin, Briefcase } from "lucide-react";
+import { Github, Linkedin, Briefcase, FileDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const fadeIn = {
@@ -13,7 +13,7 @@ export const Hero = () => {
   const { t, i18n } = useTranslation();
 
   return (
-    <section className="min-h-[80vh] flex flex-col justify-center relative">
+    <section className="min-h-[80vh] flex flex-col justify-center relative mt-20">
       <img 
         src="/assinatura.png" 
         alt="" 
@@ -34,7 +34,7 @@ export const Hero = () => {
         >
           <motion.div 
             variants={fadeIn} 
-            className="w-fit inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold mt-0 md: mt-5"
+            className="w-fit inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold mt-0 md:mt-5"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
@@ -53,18 +53,48 @@ export const Hero = () => {
 
           <motion.p 
             variants={fadeIn} 
-            className="text-base md:text-lg text-default-500 max-w-[550px] leading-relaxed"
+            className="text-base md:text-lg text-default-500 max-w-[550px] leading-relaxed italic"
           >
             {t('hero_desc')}
           </motion.p>
 
           <motion.div variants={fadeIn} className="flex gap-4 pt-2">
-            <Button isIconOnly variant="flat" radius="full" as={Link} href="https://github.com/manelsa1912" className="hover:bg-primary hover:text-white transition-all">
+            <Button 
+                isIconOnly 
+                variant="flat" 
+                radius="full" 
+                as={Link} 
+                href="https://github.com/manelsa1912" 
+                isExternal // Abre em nova aba
+                className="hover:bg-primary hover:text-white transition-all"
+            >
               <Github size={22} />
             </Button>
-            <Button isIconOnly variant="flat" radius="full" as={Link} href="https://linkedin.com/in/manuel-sa-54a202289" className="hover:bg-primary hover:text-white transition-all">
+            <Button 
+                isIconOnly 
+                variant="flat" 
+                radius="full" 
+                as={Link} 
+                href="https://linkedin.com/in/manuel-sá-54a202289" 
+                isExternal // Abre em nova aba
+                className="hover:bg-primary hover:text-white transition-all"
+            >
               <Linkedin size={22} />
             </Button>
+            
+            {/* Botão de Download do CV (Desktop Visible) */}
+           {/*  <Button 
+                variant="shadow" 
+                color="primary"
+                radius="full" 
+                as={Link} 
+                href="/cv_manuel_sa.pdf" // Caminho do PDF no repositório
+                download="Manuel_Sa_CV.pdf"
+                startContent={<FileDown size={18} />}
+                className="font-bold uppercase text-[10px] tracking-widest px-6"
+            >
+              Download CV
+            </Button> */}
           </motion.div>
         </motion.div>
 
@@ -85,9 +115,15 @@ export const Hero = () => {
                     img: "opacity-100 object-cover",
                 }}
             />
-            <div className="absolute -bottom-2 -right-2 bg-background p-3 md:p-4 rounded-2xl shadow-xl border border-divider animate-bounce">
+            
+            {/* Briefcase flutuante - Agora funcional para Download */}
+            <Link 
+                href="/cv_manuel_sa.pdf" 
+                download="Manuel_Sa_CV.pdf"
+                className="absolute -bottom-2 -right-2 bg-background p-3 md:p-4 rounded-2xl shadow-xl border border-divider animate-bounce cursor-pointer hover:scale-110 transition-transform z-20"
+            >
               <Briefcase className="text-primary" size={28} />
-            </div>
+            </Link>
           </div>
         </motion.div>
       </div>
