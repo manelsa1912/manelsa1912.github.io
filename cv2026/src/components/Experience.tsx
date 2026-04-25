@@ -22,7 +22,7 @@ export const Experience = () => {
           viewport={{ once: true }}
         >
           <Card className="bg-default-100/40 border-none shadow-none h-full rounded-[12px] overflow-hidden">
-            <CardBody className="p-10">
+            <CardBody className="md:p-10">
               <div className="flex justify-between items-start mb-6">
                 <div>
                   <Chip color="primary" variant="flat" size="sm" className="mb-4 uppercase font-bold rounded-full p-2">

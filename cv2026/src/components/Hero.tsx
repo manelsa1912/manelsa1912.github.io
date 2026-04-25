@@ -13,7 +13,7 @@ export const Hero = () => {
   const { t, i18n } = useTranslation();
 
   return (
-    <section className="min-h-[80vh] flex flex-col justify-center relative mt-[55px]">
+    <section className="min-h-[80vh] flex flex-col justify-center relative ">
       <img 
         src="/assinatura.png" 
         alt="" 
@@ -25,7 +25,7 @@ export const Hero = () => {
         className="h-auto w-auto absolute opacity-10 pointer-events-none invert dark:hidden" 
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">  
+      <div className="grid grid-cols-1 lg:grid-cols-12  items-center relative z-10">  
         <motion.div 
           className="lg:col-span-7 flex flex-col gap-6 md:gap-4"
           initial="initial" 
@@ -45,7 +45,7 @@ export const Hero = () => {
 
           <motion.h1 
             variants={fadeIn} 
-            className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.85]"
+            className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.85]"
           >
             MANUEL <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">SÁ</span>
@@ -65,7 +65,7 @@ export const Hero = () => {
                 radius="full" 
                 as={Link} 
                 href="https://github.com/manelsa1912" 
-                isExternal // Abre em nova aba
+                isExternal
                 className="hover:bg-primary hover:text-white transition-all"
             >
               <Github size={22} />
@@ -118,7 +118,7 @@ export const Hero = () => {
             
             {/* Briefcase flutuante - Agora funcional para Download */}
             <Link 
-                href="/cv_manuel_sa.pdf" 
+                href="/Manuel_Sa_CV.pdf" 
                 download="Manuel_Sa_CV.pdf"
                 className="absolute -bottom-2 -right-2 bg-background p-3 md:p-4 rounded-2xl shadow-xl border border-divider animate-bounce cursor-pointer hover:scale-110 transition-transform z-20"
             >

@@ -39,12 +39,18 @@ export const Skills = () => {
 
   return (
     <section id="skills" className="py-20 relative">
-      <h2 className="text-4xl font-black mb-12 flex items-center gap-4 relative z-30">
-        <Code2 className="text-primary" size={40} /> {t('nav_skills')}
-      </h2>
+      <div className="max-w-[800px] mb-12">
+        <h2 className="text-4xl font-black mb-6 flex items-center gap-4 relative z-30">
+          <Code2 className="text-primary" size={40} /> {t('nav_skills')}
+        </h2>
+        <p className="text-default-600 leading-relaxed text-sm md:text-base border-l-2 border-primary/30 pl-4">
+          {t('skills_description')}
+        </p>
+      </div>
+
       <div className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background via-background/80 to-transparent z-20" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background via-background/80 to-transparent z-20" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-32 bg-gradient-to-r from-background to-transparent md:via-background/80 z-20" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-12 md:w-32 bg-gradient-to-l from-background to-transparent md:via-background/80 z-20" />
 
         <div className="flex flex-col gap-1 relative z-10">
           <InfiniteRow items={row1} direction="left" duration={25} />

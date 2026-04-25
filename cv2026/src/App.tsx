@@ -20,10 +20,10 @@ export default function App() {
         <section className="snap-start min-h-screen flex flex-col justify-center">
           <Skills />
         </section>
-        <section className="snap-start min-h-screen py-20">
+        <section className="snap-start min-h-screen md:py-20">
           <Experience />
         </section>
-        <section className="snap-start min-h-screen py-20">
+        <section className="snap-start min-h-screen md:py-20">
           <Education />
         </section>
         <section className="snap-start min-h-screen flex flex-col justify-center">

@@ -16,9 +16,8 @@ export const Education = () => {
       { title: "ODSOFT: DevOps Pipeline", link: "https://github.com/diogojms2/odsoft-project", type: "Repo" },
     ],
     bachelor: [
-      { title: "High-Performance TSP Solver", link: "https://github.com/DuarteNuno/TSP", type: "C++" },
-      { title: "Network Protocols & OS", link: "#", type: "Code" },
-      { title: "Data Structures & Algos", link: "#", type: "Study" },
+      { title: "High-Performance TSP Solver (AI class)", link: "https://github.com/DuarteNuno/TSP", type: "C++" },
+      { title: "Network Setup & Protocols", link: "https://github.com/PedroCorreia56/RCOm", type: "Code" },
     ]
   };
 
@@ -38,7 +37,7 @@ export const Education = () => {
           viewport={{ once: true }}
         >
           <Card className="bg-default-100/40 border-none shadow-none h-full rounded-[12px] overflow-hidden">
-            <CardBody className="p-10">
+            <CardBody className="md:p-10">
               <div className="flex justify-between items-start mb-6">
                 <div>
                   <Chip color="primary" variant="flat" size="sm" className="mb-4 uppercase font-bold rounded-full p-2">
@@ -99,12 +98,12 @@ export const Education = () => {
         </motion.div>
 
         {/* CARD LICENCIATURA (FEUP) */}
-        <Card className="bg-primary text-primary-foreground p-10 flex flex-col relative overflow-hidden border-none rounded-[12px] shadow-xl shadow-primary/20">
-          <div className="z-10 h-full flex flex-col">
+        <Card className="bg-primary p-5 text-primary-foregroundflex flex-col relative overflow-hidden border-none rounded-[12px] shadow-xl shadow-primary/20">
+          <div className="z-10 h-full flex flex-col md:p-5">
             <Chip color="secondary" variant="flat" size="sm" className="mb-4 uppercase font-bold rounded-full p-2 dark:text-black">
               2021 — 2023
             </Chip>
-            <h3 className="text-4xl font-black mb-2 italic">{t('edu_bachelor_label')}</h3>
+            <h3 className="text-4xl font-black mb-2 italic text-white">{t('edu_bachelor_label')}</h3>
             <p className="font-bold uppercase tracking-[0.2em] text-xs opacity-80 mb-8 dark:text-black">FCUP/FEUP - Porto</p>
             
             <p className="text-sm opacity-90 mb-10 leading-relaxed font-medium italic">
