@@ -13,9 +13,11 @@ i18n.use(initReactI18next).init({
         // Hero
         hero_desc: "Full-Stack Developer especializado em React e Django. Focado em modernizar sistemas complexos e otimizar a experiência de milhares de utilizadores.",
         skills_description: "Engenharia de software focada em escalabilidade, arquitetura backend e interfaces intuitivas.",
+        
         // Experiência - Wisecrop
         exp_title: "Percurso Profissional",
         wisecrop_period: "Nov 2023 — Presente",
+        wisecrop_desc: "Principal desenvolvedor de front-end na empresa, com foco em tornar a experiência do utilizador a melhor possível.",
         wisecrop_task1: "Liderança técnica no redesign do fluxo de autenticação, reduzindo pedidos de suporte em 30%.",
         wisecrop_task2: "Colaboração em ambiente Agile, com foco em Code Reviews e refactoring constante para manter a dívida técnica baixa.",
         wisecrop_task3: "Otimização de performance front-end e melhoria de queries complexas em Django ORM para mais de 2.000 utilizadores ativos.",
@@ -27,6 +29,11 @@ i18n.use(initReactI18next).init({
         
         // Magic & Design
         exp_freelance_design_desc: "Criação de identidades visuais e engenharia de produto para marcas internacionais. Esta experiência deu-me uma sensibilidade única para UI/UX e detalhe.",
+        click_to_reveal: "Clique para explorar",
+        
+        // Botões de Expansão
+        ver_menos: "Ver menos",
+        ver_tarefas: "Ver tarefas",
         
         // Educação
         edu_master_title: "Mestrado em Engenharia de Software",
@@ -36,7 +43,7 @@ i18n.use(initReactI18next).init({
         edu_bachelor_desc: "Sólida base em Algoritmos, Sistemas Operativos e Redes. Foco em baixo nível e protocolos de rede.",
         edu_view_projects: "Projetos e Repositórios",
         
-        // Map Popups
+        // Map Popups e Diversos
         map_wisecrop_role: "Full-Stack Developer",
         map_wisecrop_task1: "Redesign do fluxo de autenticação (-30% suporte)",
         map_wisecrop_task2: "Otimização Django ORM para +2000 users",
@@ -47,8 +54,6 @@ i18n.use(initReactI18next).init({
         map_magic_quote: "A magia desenvolveu a minha comunicação eficaz e adaptabilidade.",
         map_official_site: "Website Oficial",
         map_rd_projects: "Projetos R&D:",
-        
-        // Diversos
         present: "Presente",
         map_info: "Sediado no Grande Porto, a transformar café em código escalável.",
         map_title: "Locais Relevantes",
@@ -65,9 +70,11 @@ i18n.use(initReactI18next).init({
         // Hero
         hero_desc: "Full-Stack Developer specialized in React and Django. Focused on modernizing complex systems and optimizing the experience of thousands of users.",
         skills_description: "Software engineering focused on scalability, backend architecture, and intuitive interfaces.",
+        
         // Experience - Wisecrop
         exp_title: "Professional Journey",
         wisecrop_period: "Nov 2023 — Present",
+        wisecrop_desc: "Main Front-End developer in the company, focused on delivering the best user experience possible.",
         wisecrop_task1: "Technical leadership in the authentication flow redesign, reducing support requests by 30%.",
         wisecrop_task2: "Agile collaboration, focusing on Code Reviews and constant refactoring to keep technical debt low.",
         wisecrop_task3: "Front-end performance optimization and Django ORM query improvement for 2,000+ active users.",
@@ -79,6 +86,11 @@ i18n.use(initReactI18next).init({
         
         // Magic & Design
         exp_freelance_design_desc: "Visual identity design and product engineering for international brands. This background provides a unique UI/UX sensitivity and attention to detail.",
+        click_to_reveal: "Click to explore",
+
+        // Expansion Buttons
+        ver_menos: "Show less",
+        ver_tarefas: "Show tasks",
         
         // Education
         edu_master_title: "Master's in Software Engineering",
@@ -88,7 +100,7 @@ i18n.use(initReactI18next).init({
         edu_bachelor_desc: "Strong foundation in Algorithms, Operating Systems, and Networking. Focus on low-level programming and network protocols.",
         edu_view_projects: "Technical Projects & Repos",
 
-        // Map Popups
+        // Map Popups and Misc
         map_wisecrop_role: "Full-Stack Developer",
         map_wisecrop_task1: "Authentication flow redesign (-30% support)",
         map_wisecrop_task2: "Django ORM optimization for 2000+ users",
@@ -99,8 +111,6 @@ i18n.use(initReactI18next).init({
         map_magic_quote: "Magic developed my effective communication and adaptability.",
         map_official_site: "Official Website",
         map_rd_projects: "R&D Projects:",
-        
-        // Misc
         present: "Present",
         map_info: "Based in Greater Porto, turning coffee into scalable code.",
         map_title: "Relevant Locations",

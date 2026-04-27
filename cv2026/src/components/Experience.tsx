@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   Card, 
   CardBody, 
   Chip, 
   Divider, 
   Link, 
-
   useDisclosure 
 } from "@heroui/react";
 import { 
@@ -15,7 +14,10 @@ import {
   Sparkles, 
   Binary, 
   GraduationCap, 
-  Code2
+  Code2,
+  ChevronDown,
+  ChevronUp,
+  Building2
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { MagicModal } from "./MagicModal";
@@ -23,7 +25,7 @@ import { MagicModal } from "./MagicModal";
 export const Experience = () => {
   const { t } = useTranslation();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-
+  const [isExpanded, setIsExpanded] = useState(false);
   // Dados do Carrossel
   const portfolioItems = [
     {
@@ -47,8 +49,6 @@ export const Experience = () => {
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
-
-  // Lógica de Autoplay (10 segundos)
   useEffect(() => {
     if (!isOpen) return;
     const timer = setInterval(() => {
@@ -63,58 +63,78 @@ export const Experience = () => {
 
 
   return (
-    <section id="exp" className="py-20">
-      <h2 className="text-4xl font-black mb-12 flex items-center gap-4">
-        <Briefcase className="text-primary" size={40} /> {t('exp_title')}
+    <section id="exp" className="pt-20 pb-40 md:pt-0 pb-0">
+      {/* Título da Secção */}
+      <h2 className="text-3xl md:text-4xl font-black mb-4 md:mb-12 flex items-center gap-4 text-default-900">
+        <Briefcase className="text-primary" size={32} /> {t('exp_title')}
       </h2>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* CARD PRINCIPAL: WISE CROP */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8">
+        
+        {/* CARD 1: WISE CROP */}
         <motion.div 
           className="lg:col-span-2"
-          initial={{ opacity: 0, scale: 0.95 }} 
-          whileInView={{ opacity: 1, scale: 1 }} 
+          initial={{ opacity: 0, y: 20 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
           viewport={{ once: true }}
         >
-          <Card className="bg-default-100/40 border-none shadow-none h-full rounded-[12px] overflow-hidden">
-            <CardBody className="md:p-10">
+          <Card className="bg-primary text-white border-none shadow-xl shadow-primary/20 h-full rounded-[12px] overflow-hidden">
+            <CardBody className="p-6 md:p-10">
               <div className="flex justify-between items-start mb-6">
-                <div>
-                  <Chip color="primary" variant="flat" size="sm" className="mb-4 uppercase font-bold rounded-full p-2">
+                <div className="flex flex-col gap-6">
+                  <Chip variant="flat" size="sm" className="flex uppercase font-bold rounded-full bg-white/20 text-white w-fit p-2">
                     {t('wisecrop_period')}
                   </Chip>
-                  <h3 className="text-4xl font-bold italic tracking-tight">Full-Stack Developer</h3>
-                  <Link 
-                    href="https://www.wisecrop.com" 
-                    isExternal 
-                    className="text-primary font-medium text-lg flex items-center gap-2 hover:opacity-70 transition-opacity"
-                  >
-                    Wisecrop <ExternalLink size={18} />
-                  </Link>
+                  <div className="flex items-center gap-4">
+                    <div className="p-2 md:p-3 bg-white/20 w-fit rounded-[14px] backdrop-blur-md border border-white/10">
+                      <Building2 size={22} className="text-white"/>
+                    </div>
+                    <div>
+                      <h4 className="text-4xl font-black italic leading-none">Full-Stack Developer</h4>
+                      <Link 
+                        href="https://www.wisecrop.com" 
+                        isExternal 
+                        className="text-sm md:text-md font-bold uppercase tracking-[1px] text-white/70 mt-1 hover:text-white transition-colors"
+                      >
+                        Wisecrop <ExternalLink className="ml-1" size={18} />
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-                <div className="bg-primary/10 p-6 rounded-[32px] hidden sm:block">
-                    <Code2 size={40} className="text-primary" />
+                <div className="bg-white/10 p-4 md:p-6 rounded-[24px] hidden sm:block border border-white/10">
+                  <Code2 size={30} className="text-white" />
                 </div>
               </div>
 
-              <Divider className="mb-8 opacity-50" />
+              <Divider className="hidden md:block mb-6 opacity-20 bg-white" />
+              <p className="text-[13px] md:text-sm leading-relaxed mb-6">
+                {t('wisecrop_desc')}
+              </p>
 
-              <div className="space-y-4">
+              {/* Botão Colapsar (Mobile Only) */}
+              <button 
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="flex md:hidden items-center gap-2 text-[10px] font-black uppercase text-white bg-default-100/20 border border-white/10 px-4 py-2 rounded-full tracking-widest"
+              >
+                {isExpanded ? <><ChevronUp size={14}/> {t('ver_menos')}</> : <><ChevronDown size={14}/> {t('ver_tarefas')}</>}
+              </button>
+
+              <div className={`${isExpanded ? 'block' : 'hidden'} md:block space-y-3 md:space-y-4 mt-3`}>
                 {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="flex gap-5 p-5 rounded-[24px] bg-background/60 border border-divider/40">
-                    <div className="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center font-black text-xs shrink-0">
+                  <div key={i} className="flex gap-4 p-4 md:p-5 rounded-[18px] bg-default-100/20 border border-white/5 backdrop-blur-sm hover:bg-white/15 transition-colors">
+                    <div className="h-6 w-6 md:h-8 md:w-8 rounded-full bg-white text-primary flex items-center justify-center font-black text-[10px] md:text-xs shrink-0">
                       {i}
                     </div>
-                    <p className="text-sm text-default-600 leading-relaxed">
-                        {t(`wisecrop_task${i}`)}
+                    <p className="text-xs md:text-sm text-white/90 leading-relaxed font-medium">
+                      {t(`wisecrop_task${i}`)}
                     </p>
                   </div>
                 ))}
               </div>
 
-              <div className="flex flex-wrap gap-3 mt-10">
-                {["React", "Django", "Python", "AWS", "Git", "SQL", "TypeScript"].map(tag => (
-                  <span key={tag} className="text-[10px] font-black uppercase tracking-widest bg-primary text-white px-5 py-2 rounded-full shadow-md shadow-primary/20">
+              <div className="flex flex-wrap gap-2 md:gap-3 mt-4 md:mt-8">
+                {["React", "Django", "Python", "AWS", "SQL", "TypeScript"].map(tag => (
+                  <span key={tag} className="text-[10px] font-black uppercase tracking-widest bg-white text-primary px-3 py-1.5 rounded-full shadow-md">
                     {tag}
                   </span>
                 ))}
@@ -124,63 +144,77 @@ export const Experience = () => {
         </motion.div>
 
         {/* COLUNA LATERAL */}
-        <div className="flex flex-col gap-8">
-          <Card className="bg-primary text-primary-foreground p-6 md:p-10 flex-1 relative overflow-hidden border-none rounded-[12px] shadow-xl shadow-primary/20 min-h-fit">
+        <div className="flex flex-col gap-4 md:gap-8">
+          
+          {/* CARD 2: INTERNSHIP */}
+          <Card className="bg-default-100/40 border-none shadow-none p-6 md:p-8 flex-1 relative overflow-hidden rounded-[12px]">
             <div className="z-10 relative h-full flex flex-col">
+              <Chip variant="flat" size="sm" className="flex uppercase font-bold rounded-full bg-primary/20 text-primary-900 w-fit p-2 mb-5">
+                MAR 2023 — JUL 2023
+              </Chip>
               <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 bg-white/20 w-fit rounded-[18px]">
-                  <Binary size={22} className="text-white"/>
+                <div className="p-2 md:p-3 bg-primary/10 w-fit rounded-[14px] border border-primary/5">
+                  <Binary size={22} className="text-primary"/>
                 </div>
                 <div>
-                  <h4 className="text-2xl md:text-3xl font-black italic text-white leading-none">Internship</h4>
-                  <Link href="https://www.ccg.pt" isExternal className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/70 mt-1">
+                  <h4 className="text-3xl font-black italic text-default-900 leading-none">Internship</h4>
+                  <Link 
+                    href="https://www.ccg.pt" 
+                    isExternal 
+                    className="text-sm md:text-md font-bold uppercase tracking-[0.15em] text-default-500 mt-1 hover:text-primary transition-colors"
+                  >
                     CCG/ZGDV <ExternalLink className="ml-1" size={15} />
                   </Link>
                 </div>
               </div>
-              <p className="text-sm text-white/90 leading-relaxed font-medium mb-8">
+              <p className="text-[13px] md:text-sm text-default-600 leading-relaxed mb-6">
                 {t('ccg_desc')}
               </p>
-              <div className="mt-auto flex gap-2 items-center">
-                <div className="h-9 w-9 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-md shrink-0">
-                    < GraduationCap size={18} className="text-white" />
+              <div className="mt-auto flex gap-2 items-center mb-7">
+                <div className="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center shrink-0">
+                  <GraduationCap size={18} />
                 </div>
-                <div className="flex-1 bg-white/10 rounded-full h-9 flex items-center px-4 text-[10px] font-bold tracking-tighter uppercase text-white whitespace-nowrap">
-                    React / JWT / Crypto
+                <div className="flex-1 border border-divider/40 rounded-full h-8 flex items-center px-3 text-[9px] font-bold tracking-tighter uppercase text-default-600 whitespace-nowrap overflow-hidden">
+                  React / JWT / Crypto
                 </div>
               </div>
             </div>
           </Card>
 
+          {/* CARD 3: MAGIC & DESIGN */}
           <Card 
             isPressable
             onPress={onOpen}
-            className="bg-default-900 dark:bg-transparent text-white p-10 flex-1 relative overflow-hidden border-none rounded-[12px] group"
+            className="bg-default-900 text-white p-6 md:p-8 flex-1 relative overflow-hidden border-none rounded-[12px] group"
           >
-            <div className="z-10 relative text-left">
-              <div className="flex gap-3 mb-6">
-                <div className="h-12 w-12 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Sparkles size={20} className="text-white"/>
+            <div className="z-10 relative h-full flex flex-col justify-start">
+              <Chip variant="flat" size="sm" className="flex uppercase font-bold rounded-full bg-primary/20 text-default-400 w-fit p-2 mb-5">
+                JAN 2020 — {t('present')}
+              </Chip>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-2 md:p-3 bg-primary/20 w-fit rounded-[14px] border border-white/5">
+                  <Sparkles size={22} className="text-primary"/>
+                </div>
+                <div>
+                  <h4 className="text-3xl font-black text-primary italic leading-none">Magic & Design</h4>
+                  <div className="text-sm md:text-md font-bold uppercase tracking-[0.15em] text-default-400 mt-1 text-left">
+                    Freelance Projects
+                  </div>
                 </div>
               </div>
-              <h4 className="text-2xl font-black italic mb-3">Magic & Design</h4>
-              <p className="text-xs text-default-400 leading-relaxed italic mb-4">
+              <p className="text-[13px] md:text-sm leading-relaxed mb-6 text-left dark:text-default-400 bg-primary/10 p-3 rounded-xl">
                 {t('exp_freelance_design_desc')}
               </p>
-              <div className="flex items-center gap-2 text-primary text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
-                {t('click_to_reveal')} <Sparkles size={12} />
+              <div className="mt-auto flex items-center gap-2  mb-3 text-[13px] font-bold uppercase tracking-widest opacity-100 transition-all transform group-hover:translate-x-1 bg-primary rounded-xl p-3">
+                {t('click_to_reveal')} <Sparkles size={15} />
               </div>
             </div>
-            <div className="absolute -right-10 -bottom-10 w-40 h-40 rounded-full bg-primary blur-3xl group-hover:bg-primary transition-colors" />
+            <div className="absolute -right-5 -bottom-5 w-24 h-24 bg-primary/20 blur-3xl rounded-full transition-opacity opacity-50 group-hover:opacity-100" />
           </Card>  
         </div>
       </div>
 
-      {/* MODAL DE CONTEÚDO EXTRA COM CARROSSEL */}
-      <MagicModal 
-        isOpen={isOpen} 
-        onOpenChange={onOpenChange} 
-      />
+      <MagicModal isOpen={isOpen} onOpenChange={onOpenChange} />
     </section>
   );
 };

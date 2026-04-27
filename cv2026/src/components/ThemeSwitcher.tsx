@@ -35,7 +35,7 @@ export const ThemeSwitcher = () => {
       variant="faded"
       radius="full"
       onPress={toggleTheme}
-      className="bg-content1"
+      className="bg-transparent px-2"
     >
       {isDark ? <Sun size={20} /> : <Moon size={20} />}
     </Button>
