@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Card, 
   CardBody, 
   Chip, 
-  Divider, 
   Link, 
   useDisclosure 
 } from "@heroui/react";
