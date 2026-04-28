@@ -4,6 +4,7 @@ import {
 import { GraduationCap, FileText, ExternalLink, ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
+import { TaskShowcase, type ProjectImage } from "./TaskShowcase";
 
 export const Education = () => {
   const { t } = useTranslation();
@@ -21,9 +22,16 @@ export const Education = () => {
     ]
   };
 
+  const isepImages: ProjectImage[] = [
+      { id: 1, src: "/pipeline.png", label: "Jenkins Pipeline" },
+      { id: 2, src: "/weekly-menu-suggest-plan-2.png", label: "Calendar menu" },
+      { id: 3, src: "/dashboard-2.png", label: "Dashboard example" },
+      { id: 4, src: "/componentDiagram.png", label: "Component Diagram" },
+    ];
+
   return (
-    <section id="edu" className="py-20">
-      <h2 className="text-4xl font-black mb-12 flex items-center gap-4">
+    <section id="edu" className="py-20 pb-40 md:py-0">
+      <h2 className="text-4xl font-black mb-4 md:mb-12 flex items-center gap-4">
         <GraduationCap className="text-primary" size={40} /> {t('nav_edu')}
       </h2>
 
@@ -59,15 +67,15 @@ export const Education = () => {
                 <GraduationCap size={30} className="text-white" />
               </div>
             </div>
-
-            <Divider className="hidden md:block mb-6 opacity-20 bg-white" />
             
             <p className="text-[13px] md:text-sm leading-relaxed mb-6 bg-default/10 rounded-xl p-3">
               {t('edu_master_desc')}
             </p>
 
+            <TaskShowcase images={isepImages} />
+
             {/* Accordion adaptado ao estilo do primeiro card */}
-            <div className="space-y-3">
+            <div className="space-y-3 mt-3">
               <Accordion variant="light" className="px-0">
                 <AccordionItem
                   key="1"

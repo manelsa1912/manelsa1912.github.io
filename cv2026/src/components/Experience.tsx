@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { MagicModal } from "./MagicModal";
-import { TaskShowcase } from "./TaskShowcase";
+import { TaskShowcase, type ProjectImage } from "./TaskShowcase";
 
 export const Experience = () => {
   const { t } = useTranslation();
@@ -62,6 +62,11 @@ export const Experience = () => {
     setCurrentSlide((prev) => (prev === portfolioItems.length - 1 ? 0 : prev + 1));
   };
 
+  const wisecropImages: ProjectImage[] = [
+    { id: 1, src: "/wcdb.png", label: "Dashboard" },
+    { id: 2, src: "/wctr.png", label: "Routes Tool" },
+    { id: 3, src: "/reports.png", label: "Custom Reports" },
+  ];
 
   return (
     <section id="exp" className="pt-20 pb-40 md:pt-0 pb-0">
@@ -123,7 +128,7 @@ export const Experience = () => {
                 {[1, 2, 3, 4].map((i) => (
                   <div 
                     key={i} 
-                    className="flex gap-4 p-4 md:p-5 rounded-[18px] bg-default-100/20 border border-white/5 backdrop-blur-sm hover:bg-white/15 transition-all"
+                    className="flex gap-4 p-4 md:p-5 rounded-[18px] bg-default-100/20 border border-white/5 backdrop-blur-sm hover:bg-white/15 transition-all mb-3"
                   >
                     <div className="h-6 w-6 md:h-8 md:w-8 rounded-full bg-white text-primary flex items-center justify-center font-black text-[10px] md:text-xs shrink-0 shadow-sm">
                       {i}
@@ -136,7 +141,7 @@ export const Experience = () => {
               </div>
 
               <div className="mt-6">
-                <TaskShowcase />
+                <TaskShowcase images={wisecropImages} />
               </div>
 
               <div className="flex flex-wrap gap-2 md:gap-3 mt-4 md:mt-8">
