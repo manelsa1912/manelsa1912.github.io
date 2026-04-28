@@ -13,7 +13,7 @@ export default function App() {
   return (
     <div className="h-screen overflow-y-scroll snap-y snap-mandatory bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-background to-background text-foreground selection:bg-primary/30 scroll-smooth">
       <Navbar />
-      <main className="max-w-[1200px] mx-auto px-6">
+      <main className="max-w-[1500px] mx-auto px-4">
         <section className="snap-start h-screen flex flex-col justify-center">
           <Hero />
         </section>

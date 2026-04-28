@@ -9,7 +9,15 @@ export interface ProjectImage {
 }
 interface TaskShowcaseProps {
   images: ProjectImage[];
+  aspect?: "video" | "square" | "auto" | "wide"; 
 }
+
+const aspectRatios = {
+  video: "md:aspect-video",
+  square: "md:aspect-square",
+  auto: "md:aspect-auto",
+  wide: "md:aspect-[21/9]",
+};
 
 const variants: Variants = {
   enter: (direction: number) => ({
@@ -39,7 +47,7 @@ const variants: Variants = {
   }),
 };
 
-export const TaskShowcase = ({ images }: TaskShowcaseProps) => {
+export const TaskShowcase = ({ images, aspect = "video" }: TaskShowcaseProps) => {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   if (!images || images.length === 0) return null;
@@ -63,7 +71,7 @@ export const TaskShowcase = ({ images }: TaskShowcaseProps) => {
 
   return (
     <div className="relative group w-full max-w-4xl mx-auto">
-      <div className="relative overflow-hidden bg-black/20 border border-white/10 rounded-[16px] aspect-[2.4/1] shadow-2xl">
+      <div className={`relative overflow-hidden bg-black/20 border border-white/10 rounded-[16px] aspect-square ${aspectRatios[aspect]} shadow-2xl`}>
         <AnimatePresence initial={false} custom={direction} mode="popLayout">
           <motion.img
             key={index}
