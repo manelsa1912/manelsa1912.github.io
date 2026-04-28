@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { MagicModal } from "./MagicModal";
+import { TaskShowcase } from "./TaskShowcase";
 
 export const Experience = () => {
   const { t } = useTranslation();
@@ -80,7 +81,7 @@ export const Experience = () => {
         >
           <Card className="bg-primary text-white border-none shadow-xl shadow-primary/20 h-full rounded-[12px] overflow-hidden">
             <CardBody className="p-6 md:p-10">
-              <div className="flex justify-between items-start mb-6">
+              <div className="flex justify-between items-start mb-6 md:mb-2">
                 <div className="flex flex-col gap-6">
                   <Chip variant="flat" size="sm" className="flex uppercase font-bold rounded-full bg-white/20 text-white w-fit p-2">
                     {t('wisecrop_period')}
@@ -94,7 +95,7 @@ export const Experience = () => {
                       <Link 
                         href="https://www.wisecrop.com" 
                         isExternal 
-                        className="text-sm md:text-md font-bold uppercase tracking-[1px] text-white/70 mt-1 hover:text-white transition-colors"
+                        className="text-sm md:text-md font-bold uppercase tracking-[1px] text-default/50 mt-1 hover:text-white transition-colors"
                       >
                         Wisecrop <ExternalLink className="ml-1" size={18} />
                       </Link>
@@ -106,8 +107,7 @@ export const Experience = () => {
                 </div>
               </div>
 
-              <Divider className="hidden md:block mb-6 opacity-20 bg-white" />
-              <p className="text-[13px] md:text-sm leading-relaxed mb-6">
+              <p className="text-[13px] md:text-sm leading-relaxed mb-6 bg-default/10 rounded-xl p-3 md:hidden">
                 {t('wisecrop_desc')}
               </p>
 
@@ -119,17 +119,24 @@ export const Experience = () => {
                 {isExpanded ? <><ChevronUp size={14}/> {t('ver_menos')}</> : <><ChevronDown size={14}/> {t('ver_tarefas')}</>}
               </button>
 
-              <div className={`${isExpanded ? 'block' : 'hidden'} md:block space-y-3 md:space-y-4 mt-3`}>
+              <div className={`${isExpanded ? 'block' : 'hidden'} md:grid md:grid-cols-2 gap-3 md:gap-4 mt-3`}>
                 {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="flex gap-4 p-4 md:p-5 rounded-[18px] bg-default-100/20 border border-white/5 backdrop-blur-sm hover:bg-white/15 transition-colors">
-                    <div className="h-6 w-6 md:h-8 md:w-8 rounded-full bg-white text-primary flex items-center justify-center font-black text-[10px] md:text-xs shrink-0">
+                  <div 
+                    key={i} 
+                    className="flex gap-4 p-4 md:p-5 rounded-[18px] bg-default-100/20 border border-white/5 backdrop-blur-sm hover:bg-white/15 transition-all"
+                  >
+                    <div className="h-6 w-6 md:h-8 md:w-8 rounded-full bg-white text-primary flex items-center justify-center font-black text-[10px] md:text-xs shrink-0 shadow-sm">
                       {i}
                     </div>
-                    <p className="text-xs md:text-sm text-white/90 leading-relaxed font-medium">
+                    <p className="text-xs md:text-sm text-white/90 leading-tight font-medium self-center">
                       {t(`wisecrop_task${i}`)}
                     </p>
                   </div>
                 ))}
+              </div>
+
+              <div className="mt-6">
+                <TaskShowcase />
               </div>
 
               <div className="flex flex-wrap gap-2 md:gap-3 mt-4 md:mt-8">
@@ -167,7 +174,7 @@ export const Experience = () => {
                   </Link>
                 </div>
               </div>
-              <p className="text-[13px] md:text-sm text-default-600 leading-relaxed mb-6">
+              <p className="text-[13px] md:text-sm bg-default/20 rounded-xl text-default-600 leading-relaxed mb-6 p-3">
                 {t('ccg_desc')}
               </p>
               <div className="mt-auto flex gap-2 items-center mb-7">
