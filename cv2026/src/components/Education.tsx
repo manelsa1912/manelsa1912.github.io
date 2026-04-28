@@ -71,16 +71,16 @@ export const Education = () => {
                     {t('edu_master_desc')}
                   </p>
 
-                  <Accordion variant="light" className="px-0">
+                  <Accordion variant="light" className="p-5">
                     <AccordionItem
                       key="1"
                       aria-label="Technical Projects"
-                      title={<span className="text-[10px] font-black uppercase tracking-widest text-white/80">{t('edu_view_projects')}</span>}
+                      title={<span className="text-[10px] font-black uppercase tracking-widest text-white">{t('edu_view_projects')}</span>}
                       startContent={<FileText size={18} className="text-white" />}
-                      className="bg-default-100/20 border border-white/10 rounded-[18px] px-4"
+                      className="bg-default/20 border border-white/10 rounded-[18px] p-3"
                       indicator={<ChevronDown size={18} className="text-white" />}
                     >
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pb-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {reports.master.map((report, idx) => (
                           <Button
                             key={idx}
@@ -89,7 +89,7 @@ export const Education = () => {
                             isExternal
                             variant="flat"
                             size="sm"
-                            className="justify-between bg-white text-primary hover:bg-white/90 group rounded-full px-4 h-10 border-none"
+                            className="justify-between bg-white/90 text-primary hover:bg-white group rounded-xl px-4 h-10 border-none"
                           >
                             <span className="truncate text-[10px] font-black uppercase tracking-tight">{report.title}</span>
                             <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
@@ -103,7 +103,7 @@ export const Education = () => {
 
                   <div className="flex flex-wrap gap-2 mt-6">
                     {["Software Quality", "Cloud Systems", "Scalability", "DDD", "Security"].map(tag => (
-                      <span key={tag} className="text-[9px] font-black uppercase tracking-widest bg-white/20 text-white px-3 py-1.5 rounded-full border border-white/10">
+                      <span key={tag} className="text-[10px] font-black uppercase tracking-widest bg-white text-primary px-3 py-1.5 rounded-full shadow-md">
                         {tag}
                       </span>
                     ))}

@@ -114,24 +114,22 @@ export const MagicModal = ({ isOpen, onOpenChange }: MagicModalProps) => {
                         exit={{ opacity: 0, scale: 1.1 }}
                         transition={{ duration: 0.5 }}
                         className="w-full h-full p-4 sm:p-8 flex items-center justify-center"
-                      >
-                        <div className="relative w-full h-full bg-black/20 backdrop-blur-sm border border-white/5 rounded-2xl shadow-2xl overflow-hidden flex items-center justify-center">
+                      >                      
                           {portfolioItems[currentSlide].image ? (
                             <img 
                               src={portfolioItems[currentSlide].image} 
                               alt={portfolioItems[currentSlide].title}
-                              className="w-full h-full object-contain p-2 sm:p-4" 
+                              className="w-auto h-auto backdrop-blur-sm border border-white/5 rounded-2xl shadow-2xl" 
                             />
                           ) : (
                             <Code2 size={60} className="text-primary opacity-20" />
                           )}
                           <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-white/5 opacity-40 pointer-events-none" />
-                        </div>
                       </motion.div>
                     </AnimatePresence>
 
                     {/* Navegação Manual: Mais compacta em mobile */}
-                    <div className="absolute bottom-4 right-4 flex gap-2 z-30">
+                    <div className="absolute bottom-4 right-4 flex gap-2 z-30 ">
                       <Button isIconOnly radius="full" size="sm" variant="flat" className="bg-black/60 border border-white/10 backdrop-blur-md text-white sm:size-md" onClick={prevSlide}>
                         <ChevronLeft size={18} />
                       </Button>
@@ -185,7 +183,7 @@ export const MagicModal = ({ isOpen, onOpenChange }: MagicModalProps) => {
                             color="primary"
                             variant="shadow"
                             size="lg"
-                            className="w-full sm:w-auto font-black italic px-8 shadow-primary/20"
+                            className="w-full sm:w-auto font-black italic px-8 shadow-primary/20 rounded-xl"
                             endContent={<ExternalLink size={18} />}
                           >
                             View Project

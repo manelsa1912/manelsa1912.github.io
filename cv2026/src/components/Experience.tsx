@@ -87,7 +87,7 @@ export const Experience = () => {
               {/* Botão Colapsar - Visível em todos os tamanhos */}
               <button 
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="flex items-center gap-2 text-[10px] font-black uppercase text-white bg-default/20 border border-white/10 px-4 py-3 rounded-full tracking-widest hover:bg-white/20 transition-colors mt-4"
+                className="flex items-center gap-2 text-[10px] font-black uppercase text-white bg-default/20 border border-white/10 p-4 rounded-xl tracking-widest hover:bg-white/20 transition-colors mt-4"
               >
                 {isExpanded ? (
                   <><ChevronUp size={14}/> {t('ver_menos')}</>
