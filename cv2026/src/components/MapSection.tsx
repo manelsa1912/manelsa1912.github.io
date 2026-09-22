@@ -44,7 +44,7 @@ export const MapSection = () => {
     wisecrop: { 
       pos: [41.1579, -8.6291] as [number, number], 
       title: "Wisecrop", 
-      icon: createCustomIcon('https://play-lh.googleusercontent.com/OobEapDiSscr2fP6jbex8MYB74GmTWK4WofNAencMK32XW9Y9Fl_nFyXHQ88ng-moufK-AqEUBvFYz9AktpNsQ', 'border-primary'),
+      icon: createCustomIcon('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZkCBkAQMay4Ol8MSbiP61rbkRHCrycV4VyUCJDCL3xbjwztdCc6FTsQOG&s=10', 'border-primary'),
       content: (
         <div className="flex flex-col gap-3">
           <div>
@@ -161,7 +161,7 @@ export const MapSection = () => {
           >
             <MapController />
             <AutoFitBounds positions={allPositions} />
-            <TileLayer url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
+            <TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}" />
 
             {Object.entries(locations).map(([key, loc]) => (
               <Marker key={key} position={loc.pos} icon={loc.icon}>
